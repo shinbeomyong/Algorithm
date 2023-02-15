@@ -100,6 +100,42 @@ public class DoubleLinkedList <T>{
 
         return null;
     }
+    public boolean insertToFront(T existData, T addData){
+
+        if (this.head == null){
+            this.head = new Node<T>(addData);
+            this.tail = this.head;
+        }
+        else if (this.head.data == existData) {
+            Node<T> newhead = new Node<T>(addData); // 이 부분이 내가 넣을 data를 끼워넣기 위해 node로 생성하는 것!
+
+            newhead.next = this.head;
+            this.head = newhead;
+
+            return true;
+        }
+        else{
+            Node<T> node = this.head;
+
+            while(node != null){
+                if(node.data == existData)
+                {
+                    Node<T> prevnode = node.prev;
+                    prevnode.next = new Node<T>(addData);
+                    prevnode.next.next = node;
+
+                    prevnode.next.prev = prevnode;
+                    node.prev = prevnode.next;
+
+                    return true;
+                }
+                else {
+                    node = node.next;
+                }
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
         DoubleLinkedList<Integer> node = new DoubleLinkedList<Integer>();
@@ -111,9 +147,24 @@ public class DoubleLinkedList <T>{
         node.addNode(5);
 
         node.printAll();
+        System.out.println("---------------------");
 
-        node.SearchedHead(3);
-        node.SearchedTail(4);
+        System.out.println(node.insertToFront(3,2));
+        System.out.println(node.insertToFront(6,2));
+
+        node.printAll();
+        System.out.println("---------------------");
+
+        System.out.println(node.insertToFront(1,0));
+        node.addNode(6);
+
+        node.printAll();
+        System.out.println("---------------------");
+
+//        node.SearchedHead(3);
+//        node.SearchedTail(4);
+
+
     }
 }
 
