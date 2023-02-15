@@ -137,6 +137,47 @@ public class DoubleLinkedList <T>{
         return false;
     }
 
+    public boolean insertToBehind(T existData, T addData){
+
+        if (this.head == null) {
+            Node<T> node = new Node<T>(addData);
+            this.head = node;
+        }
+        else if(this.tail.data == existData){
+            Node<T> newnode = new Node<T>(addData);
+
+            newnode.prev = this.tail;
+            this.tail.next = newnode;
+            this.tail = newnode;
+
+            return true;
+        }
+        else{
+            Node<T> node = this.head;
+
+            while(node.next != null){
+
+                if(node.data == existData)
+                {
+                    Node<T> newnode = new Node<T>(addData);
+
+                    newnode.next = node.next;
+                    node.next.prev = newnode;
+                    node.next = newnode;
+                    newnode.prev = node;
+
+                    return true;
+                }
+                else {
+                    node = node.next;
+                }
+
+            }
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) {
         DoubleLinkedList<Integer> node = new DoubleLinkedList<Integer>();
 
@@ -160,6 +201,12 @@ public class DoubleLinkedList <T>{
 
         node.printAll();
         System.out.println("---------------------");
+
+        System.out.println(node.insertToBehind(6,7));
+        System.out.println(node.insertToBehind(0,9));
+        System.out.println(node.insertToBehind(10,11));
+
+        node.printAll();
 
 //        node.SearchedHead(3);
 //        node.SearchedTail(4);
