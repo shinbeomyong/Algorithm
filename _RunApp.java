@@ -12,7 +12,9 @@ public class _RunApp {
         버블정렬 bb = new 버블정렬();
         선택정렬 st = new 선택정렬();
         DFS dfs = new DFS();
+        BFS bfs = new BFS();
+        이진탐색 ej = new 이진탐색();
 
-        dfs.run();
+        ej.run();
     }
 }
