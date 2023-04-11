@@ -81,3 +81,105 @@ public class BFS {
         }
     }
 }
+
+/*
+static boolean[][] visited;
+    static int[][] A;
+
+    static int n;
+    static int m;
+
+    static String path;
+
+    public static void main(String[] args) throws InterruptedException, IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+
+        A = new int[n][m];
+        visited = new boolean[n][m];
+
+        for (int i = 0; i < n; i++) {
+            st = new StringTokenizer(br.readLine());
+            String str = st.nextToken();
+
+            for (int j = 0; j < m; j++) {
+                A[i][j] = Integer.parseInt(String.valueOf(str.charAt(j)));
+            }
+        }
+
+        path = "";
+        BFS(0,0);
+
+        System.out.println(path);
+    }
+
+    static public void BFS(int i, int j){
+        //Queue<int[]> queue = new LinkedList<>();
+        Queue<History> queue = new LinkedList<>();
+
+        int currow = i;
+        int curcol = j;
+        int curdist = 1;
+        String curPath = "";
+
+        queue.add(new History(i,j,curdist,curPath));
+
+        visited[i][j] = true;
+
+        while(!queue.isEmpty()){
+
+            History history = queue.poll();
+
+            currow = history.row;
+            curcol = history.col;
+            curdist = history.dist;
+            curPath = history.path;
+            path = curPath;
+
+            visited[currow][curcol] = true;
+
+            if(currow == 3 && curcol == 0){     // target 이면 break 하고 현재 path를 반환! 없는 경우 queue가 다 비어져있는 것으로 판단.
+                break;
+            }
+
+            if(currow-1 >= 0 && A[currow-1][curcol] != 0 && !visited[currow-1][curcol]){
+                queue.add(new History(currow-1,curcol,curdist+1,curPath));
+            }
+
+            if(currow+1 < n && A[currow+1][curcol] != 0 && !visited[currow+1][curcol]){
+                queue.add(new History(currow+1,curcol,curdist+1,curPath));
+            }
+
+            if(curcol+1 < m && A[currow][curcol+1] != 0 && !visited[currow][curcol+1]){
+                queue.add(new History(currow,curcol+1,curdist+1,curPath));
+            }
+
+            if(curcol-1 >= 0 && A[currow][curcol-1] != 0 && !visited[currow][curcol-1]){
+                queue.add(new History(currow,curcol-1,curdist+1,curPath));
+            }
+        }
+
+        if(queue.isEmpty()){
+            path = "길이 없습니다.";
+        }
+    }
+
+    public static class History{
+        int row, col, dist;
+        String path;
+
+        public History(int row, int col, int dist, String oldPath){
+            this.row = row;
+            this.col = col;
+            this.dist = dist;
+            if("".equals(oldPath)){
+                this.path = "(" + row + "," + col + ")";
+            }else{
+                this.path = oldPath + "-> " + "(" + row + "," + col + ")";
+            }
+        }
+    }
+ */
