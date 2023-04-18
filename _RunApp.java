@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class _RunApp {
     public static void main(String[] args) throws IOException {
-        주몽의명령 jm = new 주몽의명령();
+        /*주몽의명령 jm = new 주몽의명령();
         슬라이딩윈도우 sw = new 슬라이딩윈도우();
         스택과큐 sq = new 스택과큐();
         카드게임 cg = new 카드게임();
@@ -14,7 +14,10 @@ public class _RunApp {
         DFS dfs = new DFS();
         BFS bfs = new BFS();
         이진탐색 ej = new 이진탐색();
+        Greedy gd = new Greedy();
+        소수 ss = new 소수();*/
+        유클리드호제법 uh = new 유클리드호제법();
 
-        ej.run();
+        uh.run();
     }
 }
